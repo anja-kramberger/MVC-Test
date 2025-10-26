@@ -1,0 +1,75 @@
+﻿@{
+    var totals = ViewBag.EmployeeTotals as List<EmployeeTotal>;
+    var labels = totals.Select(e => e.Name).ToArray();
+    var values = totals.Select(e => Math.Floor(e.TotalHours)).ToArray();
+}
+<div>
+    <h1>Employee List</h1>
+</div>
+
+<div class="employee-container">
+    <div class="table-container">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Total Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in ViewBag.EmployeeTotals)
+                {
+                    var empHours = employee.TotalHours < 100 ? "low-hours" : "";
+                    <tr class="@empHours">
+                        <td>@employee.Name</td>
+                        <td>@Math.Floor(employee.TotalHours) hrs</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="employeePieChart"></canvas>
+        <button id="downloadBtn">Download Chart</button>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(labels));
+        const data = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(values));
+
+        const backgroundColors = data.map(() => {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        });
+
+        const ctx = document.getElementById('employeePieChart').getContext('2d');
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: backgroundColors
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.href = myPieChart.toBase64Image();
+            link.download = 'employee_chart.png';
+            link.click();
+        });
+    </script>
+}

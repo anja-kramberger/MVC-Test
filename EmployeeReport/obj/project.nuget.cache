@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "ac9w4j/4hHszs1m//sLNr53LSDCh17kXm56LeD7yA3zkY7GBgUrtR6SI1Bj1dI6Zlm8OZL6RprqwN83Uzni/ww==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\PANDA\\Desktop\\C#-anja\\EmployeeReport\\EmployeeReport\\EmployeeReport.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PANDA\\.nuget\\packages\\system.drawing.common\\9.0.10\\system.drawing.common.9.0.10.nupkg.sha512",
+    "C:\\Users\\PANDA\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\PANDA\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\PANDA\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\PANDA\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.15\\microsoft.netcore.app.host.win-x64.7.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
